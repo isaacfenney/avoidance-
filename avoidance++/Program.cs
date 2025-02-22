@@ -1,4 +1,4 @@
-﻿namespace avoidance__
+namespace avoidance__
 {
     abstract class Game
     {
@@ -191,8 +191,31 @@
     {
         static void Main()
         {
-            RandomGame r = new RandomGame(20, 20, 1);
-            r.PlayGame();
+            bool exit = false;
+            ConsoleKey menuChoice;
+            while (!exit)
+            {
+                Console.Clear();
+                Console.SetCursorPosition(0, 0);
+                Console.WriteLine("AVOIDANCE++\n\n1. Easy\n2. Normal\n3. Hard\n4. Exit");
+                menuChoice = Console.ReadKey().Key;
+                Console.Clear();
+                switch (menuChoice)
+                {
+                    case ConsoleKey.D1:
+                        new RandomGame(20, 20, 1).PlayGame();
+                        break;
+                    case ConsoleKey.D2:
+                        new RandomGame(20, 20, 2).PlayGame();
+                        break;
+                    case ConsoleKey.D3:
+                        new RandomGame(20, 20, 3).PlayGame();
+                        break;
+                    case ConsoleKey.D4:
+                        exit = true;
+                        break;
+                }
+            }
         }
     }
 }
